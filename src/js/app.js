@@ -1448,6 +1448,17 @@ document.querySelector('.bottom').addEventListener('click', e => {
                 persist.persistDataPerMonth('totFeb', state.february.tot)
                 //const storeNov = JSON.parse(localStorage.getItem('expensesNov'))
                 //if(storeNov) storeNov.forEach(el => UICtrl.renderIncExp(el, elements.expensesContainer))
+            }else if(month === 'december'){
+                const incomeIndexDec = state.december.incomes.findIndex(el => el.id === id)
+                state.december.incomes.splice(incomeIndexDec, 1)
+                persist.persistDataPerMonth('incomesDec', state.december.incomes)
+                //UICtrl.removeIncExp(id)
+                read.readStorageIncDec()
+                calc.calculateBudget('inc')
+                persist.persistDataPerMonth('totalDec', state.december.total)
+                persist.persistDataPerMonth('totDec', state.december.tot)
+                //const storeNov = JSON.parse(localStorage.getItem('expensesNov'))
+                //if(storeNov) storeNov.forEach(el => UICtrl.renderIncExp(el, elements.expensesContainer))
             }
             //calculateBudget('inc')
                 //persistDataInc()
@@ -1496,6 +1507,18 @@ document.querySelector('.bottom').addEventListener('click', e => {
                 calc.calculateBudget('exp')
                 persist.persistDataPerMonth('totalsFeb', state.february.totals)
                 persist.persistDataPerMonth('totFeb', state.february.tot)
+
+                //const storeNov = JSON.parse(localStorage.getItem('expensesNov'))
+                //if(storeNov) storeNov.forEach(el => UICtrl.renderIncExp(el, elements.expensesContainer))
+            }else if(month === 'december'){
+                const expenseIndexDec = state.december.expenses.findIndex(el => el.id === id)
+                state.december.expenses.splice(expenseIndexDec, 1)
+                persist.persistDataPerMonth('expensesDec', state.december.expenses)
+                //UICtrl.removeIncExp(id)
+                read.readStorageDec()
+                calc.calculateBudget('exp')
+                persist.persistDataPerMonth('totalsDec', state.december.totals)
+                persist.persistDataPerMonth('totDec', state.december.tot)
 
                 //const storeNov = JSON.parse(localStorage.getItem('expensesNov'))
                 //if(storeNov) storeNov.forEach(el => UICtrl.renderIncExp(el, elements.expensesContainer))
